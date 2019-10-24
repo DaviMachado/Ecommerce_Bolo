@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- @author Davi Rodrigues-->
+<!-- @date 24/10/2019 -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Cadastro de Cliente</title>
+		<!-- <link href="../CSS/style.css" rel="stylesheet" type="text/css"> -->
+		<link href="../CSS/bootstrap.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<fieldset class="form-group">
+		<legend align="center">Formulário de Cliente</legend>
+			<form action="http://localhost:8080/Ecommerce_Bolo/cadastro">
+				
+			  	<!-- Flag Ativo -->
+				<div class="form-row">
+				    <div>
+				      <input type="checkbox" name="flgAtivo" value="1">Ativo<br>
+				    </div>
+			  	</div>
+				
+				<!-- Login & Senha -->
+				<div class="form-row">
+				    <div class="form-group col-md-12">
+				      <label>Login</label>
+				      <input type="text" class="form-control" name="login" placeholder="Login" required>
+				    </div>
+			  	</div>
+			  	<div class="form-row">
+				    <div class="form-group col-md-6">
+				      <label>Senha</label>
+				      <input type="password" class="form-control" name="senha" placeholder="Senha" required>
+				      <!--
+				      <small class="form-text">
+					  	Sua senha deve ter entre 8 e 20 caracteres, os quais devem ser letras e números, sem espaços, caracteres especiais ou emojis.
+					  </small>
+					  -->
+				    </div>
+   				    <div class="form-group col-md-6">
+				      <label>Confirmar Senha</label>
+				      <input type="password" class="form-control" name="confirmarSenha" placeholder="Confirmar Senha" required>
+				    </div>
+			  	</div>
+			  	
+			  	<!-- Nome -->
+				<div class="form-row">
+				    <div class="form-group col-md-6">
+				      <label>Nome</label>
+				      <input type="text" class="form-control" name="nome" placeholder="Nome" required>
+				    </div>
+			  	</div>
+			  	
+			  	<!-- CPF -->
+				<div class="form-row">
+				    <div class="form-group col-md-6">
+				      <label>CPF</label>
+				      <input type="text" class="form-control" name="cpf" placeholder="CPF">
+				    </div>
+			  	</div>
+				
+			  	<!-- Data Nascimento -->
+				<div class="form-row">
+				    <div class="form-group col-md-2">
+				      <label>Data Nascimento</label>
+				      <input type="date" class="form-control" name="dtNasc" placeholder="Data Nascimento">
+				    </div>
+			  	</div>
+			  	
+				<!-- Codigo CLiente -->
+				<div class="form-row">
+				    <div class="form-group col-md-10">
+				      <label>Código Cliente Sys</label>
+				      <input type="text" class="form-control" name="cdCliente" placeholder="Código Cliente Sys">
+				    </div>
+			  	</div>
+				
+				<!-- Botões -->
+				<div col-md-2 align="center">
+					<button class="btn btn-primary" name="operacao" value="SALVAR">Cadastrar</button>
+					<button class="btn btn-primary" name="operacao" value="CONSULTAR">Consultar</button>
+					<button class="btn btn-primary" name="operacao" value="ALTERAR">Alterar</button>
+					<button class="btn btn-primary" name="operacao" value="EXCLUIR">Excluir</button>
+				</div>
+
+			</form>
+		</fieldset>
+	</body>
+</html>

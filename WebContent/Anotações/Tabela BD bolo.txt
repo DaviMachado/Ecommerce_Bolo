@@ -1,0 +1,15 @@
+create database ecommerce;
+
+create table bolo (
+	id	BIGINT	NOT	NULL	AUTO_INCREMENT,
+	nome	VARCHAR(100),
+	sabor	VARCHAR(30),
+	preco	FLOAT(8,2),
+	tamanho	CHAR(1),
+	observacao VARCHAR(255)
+	primary	key	(id)
+);
+
+use ecommerce;
+
+select * from bolo;
