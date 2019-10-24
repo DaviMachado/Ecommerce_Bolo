@@ -1,0 +1,16 @@
+create database ecommerce;
+
+create table cliente (
+	id	BIGINT	NOT	NULL	AUTO_INCREMENT,
+	login		VARCHAR(50),
+	senha		VARCHAR(50),
+	nome		VARCHAR(50),
+	cpf			VARCHAR(14),
+	dt_nasc 	DATE,
+	cd_cliente	VARCHAR(30)
+	primary	key	(id)
+);
+
+use ecommerce;
+
+select * from cliente;
