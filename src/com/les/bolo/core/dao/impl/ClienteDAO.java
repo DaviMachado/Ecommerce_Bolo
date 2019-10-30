@@ -2,16 +2,18 @@ package com.les.bolo.core.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.les.bolo.core.dominio.Cliente;
 import com.les.bolo.core.dominio.EntidadeDominio;
 
-import br.com.wi2.glpi.core.dominio.Contato;
-
 public class ClienteDAO extends AbstractJdbcDAO {
 	
-	// Metodo para salvar o Cliente
+	/**
+	 * Metodo para salvar o Cliente
+	 * @param entidade
+	 */
 	public void salvar(EntidadeDominio entidade) {
 		openConnection();
 		
@@ -39,13 +41,71 @@ public class ClienteDAO extends AbstractJdbcDAO {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-	}
+	} // Salvar
 	
 	
-	// Metodo para Listar o Cliente
+	/**
+	 * Metodo para alterar o Cliente
+	 * @param entidade
+	 */
+	public void alterar (EntidadeDominio entidade) {
+		openConnection();
+		
+		String sql = "update cliente set login=?, senha=?, " +
+					 "nome=?, cpf=?, dt_nasc=?, cd_cliente=? where id=?";
+		
+		try {
+			Cliente cliente = (Cliente) entidade;
+			
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			
+			stmt.setString(1, cliente.getLogin());
+			stmt.setString(2, cliente.getSenha());
+			stmt.setString(3, cliente.getNome());
+			stmt.setString(4, cliente.getCpf());
+			stmt.setString(5, cliente.getDt_nasc());
+			stmt.setString(6, cliente.getCdCliente());
+			stmt.setString(7, cliente.getId());
+			
+			stmt.execute();
+			stmt.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	} // Alterar
+	
+	
+	/**
+	 * Metodo para Excluir o Cliente
+	 * @param entidade
+	 */
+	public void excluir (EntidadeDominio entidade) {
+		openConnection();
+		
+		try {
+			Cliente cliente = (Cliente) entidade;
+			
+			PreparedStatement stmt = connection.prepareStatement("delete from cliente where id=?");
+			
+			stmt.setString(1, cliente.getId());
+			
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	} // Excluir
+	
+	
+	/**
+	 * Metodo para Listar o Cliente
+	 * @param entidade
+	 * @return
+	 */
 	public List<EntidadeDominio> consultar (EntidadeDominio entidade){
 		openConnection();
 		try {
+			List<EntidadeDominio> clientes = new ArrayList<>();
 			PreparedStatement stmt = connection.prepareStatement("select * from cliente");
 			ResultSet rs = stmt.executeQuery();
 			
@@ -62,16 +122,14 @@ public class ClienteDAO extends AbstractJdbcDAO {
 				cliente.setCdCliente(rs.getString("cdCliente"));
 				
 				// adicionando o objeto à lista
-				cliente.add(contato);
+				clientes.add(cliente);
 			}
 			rs.close();
 			stmt.close();
-			return contatos;
+			return clientes;
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new RuntimeException(e);
 		}
-		
-		return null;
-	}
+	} // Listar
 	
 }

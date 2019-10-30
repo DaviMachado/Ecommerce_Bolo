@@ -3,7 +3,7 @@ package com.les.bolo.core.dao.impl;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.les.bolo.util.ConnectionFactory;;
+import com.les.bolo.util.Conexao;
 
 /**
  * Classe abstrata AbstractJdbcDAO,
@@ -19,9 +19,11 @@ public abstract class AbstractJdbcDAO {
         try {
 
             if (connection == null || connection.isClosed()) {
-                connection = ConnectionFactory.getConnection();
+            	connection = Conexao.getConnection();
             }
 
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace(); 
         } catch (SQLException e) {
             e.printStackTrace();
         }

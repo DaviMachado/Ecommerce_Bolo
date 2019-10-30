@@ -10,7 +10,7 @@ import com.les.bolo.util.ConnectionFactory;
  * @author Davi Rodrigues
  * @date 23/10/2019
  */
-public class Conexao {
+public class TestaConexaoFactory {
 	
 	public static void main(String[] args) throws SQLException {
 		Connection connection = new ConnectionFactory().getConnection();

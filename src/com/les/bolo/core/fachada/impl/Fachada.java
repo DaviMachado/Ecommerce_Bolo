@@ -10,11 +10,17 @@ import com.les.bolo.core.fachada.IFachada;
  * @date 23/10/2019
  */
 public class Fachada implements IFachada {
+	
+	private Resultado resultado;
+	
 
 	@Override
 	public Resultado salvar(EntidadeDominio entidade) {
-		// TODO Auto-generated method stub
-		return null;
+		resultado = new Resultado();
+		
+		
+		
+		return resultado;
 	}
 
 	@Override
