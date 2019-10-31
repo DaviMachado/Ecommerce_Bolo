@@ -18,8 +18,8 @@ public class ClienteDAO extends AbstractJdbcDAO {
 		openConnection();
 		
 		String sql = "insert into cliente "+
-				"(login,senha,nome,cpf,dt_nasc,cd_cliente)" +
-				"values (?,?,?,?,?,?)";
+				"(login,senha,nome,cpf,dt_nasc,cd_cliente,fl_ativo)" +
+				"values (?,?,?,?,?,?,?)";
 		
 		try {
 			Cliente cliente = (Cliente) entidade;
@@ -34,6 +34,7 @@ public class ClienteDAO extends AbstractJdbcDAO {
 			stmt.setString(4,cliente.getCpf());
 			stmt.setString(5,cliente.getDt_nasc());
 			stmt.setString(6,cliente.getCdCliente());
+			stmt.setString(7, cliente.getFlgAtivo());
 			
 			// executa
 			stmt.execute();
