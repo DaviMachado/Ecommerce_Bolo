@@ -14,7 +14,7 @@ import com.les.bolo.core.dominio.Cliente;
 
 //Registrando uma Servlet sem a necessidade do arquivo "web.xml".
 //Parâmetros: nome da Servlet e a URL que ela vai acessar.
-@WebServlet(name="Cadastro Servlet", urlPatterns="/cadastro")
+@WebServlet(name="Cadastro Servlet", urlPatterns="/cadastroTeste")
 
 /**
  * Servlet feita para testar o CRUD,
@@ -47,12 +47,9 @@ public class CadastroServletTeste extends HttpServlet {
 		cliente.setCdCliente(req.getParameter("cdCliente"));
 		
 		// Verificando se os botões foram clicados na tela
-		boolean cadastrar = Boolean.parseBoolean((req.getParameter("cadastrar")!=null?"true":"false"));
-		boolean editar = Boolean.parseBoolean((req.getParameter("editar")!=null?"true":"false"));
-		boolean remover = Boolean.parseBoolean((req.getParameter("remover")!=null?"true":"false"));
-		boolean listar = Boolean.parseBoolean((req.getParameter("listar")!=null?"true":"false"));
+		String operacao = (req.getParameter("operacao"));
 		
-		if(cadastrar) {
+		if (("SALVAR").equals(operacao)) {
 			// Salva o que foi digitado na tela
 			dao.salvar(cliente);
 			
@@ -61,24 +58,16 @@ public class CadastroServletTeste extends HttpServlet {
 			// Mostra o que foi gravado
 			writer.println("<ul>");
 			writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getLogin() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getSenha() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getNome() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getCpf() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getDt_nasc() + "</li>");
-			writer.println("<li>Ativo: " + cliente.getCdCliente() + "</li>");
+			writer.println("<li>Login: " + cliente.getLogin() + "</li>");
+			writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
+			writer.println("<li>Nome: " + cliente.getNome() + "</li>");
+			writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
+			writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");
+			writer.println("<li>Codigo Cliente: " + cliente.getCdCliente() + "</li>");
 			writer.println("</ul>");
 			
 			writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 		}
-		if(editar) {
-			
-		}
-		if(remover) {
-			
-		}
-		if(listar) {
-			
-		}
+
 	}
 }

@@ -1,5 +1,7 @@
 create database ecommerce;
 
+drop table cliente;
+
 create table cliente (
 	id	BIGINT	NOT	NULL	AUTO_INCREMENT,
 	login		VARCHAR(50),
@@ -7,7 +9,8 @@ create table cliente (
 	nome		VARCHAR(50),
 	cpf		VARCHAR(14),
 	dt_nasc 	DATE,
-	cd_cliente	VARCHAR(30)
+	cd_cliente	VARCHAR(30),
+	fl_ativo NUMERIC(1),
 	primary	key	(id)
 );
 
