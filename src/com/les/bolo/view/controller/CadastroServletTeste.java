@@ -24,50 +24,68 @@ import com.les.bolo.core.dominio.Cliente;
  */
 public class CadastroServletTeste extends HttpServlet {
 	
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		// vamos indicar que a nossa resposta será em HTML ao invés de texto
-		resp.setContentType("text/html");
-		
-		// Usa para escrever na tela
-		PrintWriter writer = resp.getWriter();
-		
-		// instanciando as classes
-		Cliente cliente = new Cliente();
-		ClienteDAO dao = new ClienteDAO();
-		
-		// Pegando as informações digitadas nos Forms do HTML
-		cliente.setFlgAtivo(req.getParameter("flgAtivo"));
-		cliente.setLogin(req.getParameter("login"));
-		cliente.setSenha(req.getParameter("senha"));
-		cliente.setNome(req.getParameter("nome"));
-		cliente.setCpf(req.getParameter("cpf"));
-		cliente.setDt_nasc(req.getParameter("dtNasc"));
-		cliente.setCdCliente(req.getParameter("cdCliente"));
-		
-		// Verificando se os botões foram clicados na tela
-		String operacao = (req.getParameter("operacao"));
-		
-		if (("SALVAR").equals(operacao)) {
-			// Salva o que foi digitado na tela
-			dao.salvar(cliente);
+	// Servlet Principal do sistema
+		protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-			writer.println("<h1>Cadastro salvo com sucesso!</h1>");
+			// vamos indicar que a nossa resposta será em HTML ao invés de texto
+			response.setContentType("text/html");
 			
-			// Mostra o que foi gravado
-			writer.println("<ul>");
-			writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
-			writer.println("<li>Login: " + cliente.getLogin() + "</li>");
-			writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
-			writer.println("<li>Nome: " + cliente.getNome() + "</li>");
-			writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
-			writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");
-			writer.println("<li>Codigo Cliente: " + cliente.getCdCliente() + "</li>");
-			writer.println("</ul>");
+			// Usa para escrever na tela
+			PrintWriter writer = response.getWriter();
 			
-			writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			// instanciando as classes
+			Cliente cliente = new Cliente();
+			ClienteDAO dao = new ClienteDAO();
+			
+			// Pegando as informações digitadas nos Forms do HTML
+			cliente.setFlgAtivo(request.getParameter("flgAtivo"));
+			cliente.setLogin(request.getParameter("login"));
+			cliente.setSenha(request.getParameter("senha"));
+			cliente.setNome(request.getParameter("nome"));
+			cliente.setCpf(request.getParameter("cpf"));
+			cliente.setDt_nasc(request.getParameter("dtNasc"));
+			cliente.setCdCliente(request.getParameter("cdCliente"));
+			
+			// Verificando se os botões foram clicados na tela
+			String operacao = (request.getParameter("operacao"));
+			
+			if (("SALVAR").equals(operacao)) {
+				// Salva o que foi digitado na tela
+				dao.salvar(cliente);
+				
+				writer.println("<h1>Cadastro salvo com sucesso!</h1>");
+				
+				// Mostra o que foi gravado
+				writer.println("<ul>");
+				writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
+				writer.println("<li>Login: " + cliente.getLogin() + "</li>");
+				writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
+				writer.println("<li>Nome: " + cliente.getNome() + "</li>");
+				writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
+				writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");
+				writer.println("<li>Codigo Cliente: " + cliente.getCdCliente() + "</li>");
+				writer.println("</ul>");
+				
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			}
+			else if (("ALTERAR").equals(operacao)) {
+				
+			}
+			else if (("EXCLUIR").equals(operacao)) {
+				
+			}
+			else if (("CONSULTAR").equals(operacao)) {
+				
+			}
 		}
-
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
 	}
 }
