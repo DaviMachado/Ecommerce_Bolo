@@ -69,13 +69,37 @@ public class CadastroServletTeste extends HttpServlet {
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 			else if (("ALTERAR").equals(operacao)) {
+				// Edita o cliente
+				dao.alterar(cliente);
 				
+				writer.println("<h1>Cadastro Editado com sucesso!</h1>");
+				
+				writer.println("<ul>");
+				writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
+				writer.println("<li>Login: " + cliente.getLogin() + "</li>");
+				writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
+				writer.println("<li>Nome: " + cliente.getNome() + "</li>");
+				writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
+				writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");
+				writer.println("<li>Codigo Cliente: " + cliente.getCdCliente() + "</li>");
+				writer.println("</ul>");
+				
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 			else if (("EXCLUIR").equals(operacao)) {
+				// Deleta o cadastro do cliente conforme o codigo do cliente
+				dao.excluir(cliente);
 				
+				writer.println("<h1>Cadastro Removido com sucesso!</h1>");
+				
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 			else if (("CONSULTAR").equals(operacao)) {
+				// Lista todos os clientes do BD
+				writer.println("<h1>Listagem dos Clientes!</h1>");
 				
+				// Redireciona para o arquivo .jsp
+				request.getRequestDispatcher("JSP/lista-clientes-scriptlet.jsp").forward(request, response);
 			}
 		}
 	
