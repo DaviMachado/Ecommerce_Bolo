@@ -22,20 +22,22 @@
         </tr>
 		<%
 		ClienteDAO dao = new ClienteDAO();
-		List<Cliente> clientes = dao.consultar(Cliente);
+		Cliente c = new Cliente();
 		
-		for(Cliente cliente : clientes) {
+		List<EntidadeDominio> clientes = dao.consultar(c);
+		
+		for(EntidadeDominio e : clientes) {
 		%>
 			<tr>
-				<td><%=cliente.getFlgAtivo() %></td>
-				<td><%=cliente.getLogin() %></td>
-				<td><%=cliente.getSenha() %></td>
-				<td><%=cliente.getNome() %></td>
-				<td><%=cliente.getCpf() %></td>
-				<td><%=cliente.getDt_nasc() %></td>
-				<td><%=cliente.getCdCliente() %></td>
-				<td><a href="preAlterar_cliente.jsp?id=<%= cliente.getCdCliente()%>">Alterar</a></td>
-                <td><a href="DeletarCliente?id=<%= cliente.getCdCliente()%>&acao=deletar">Deletar</a></td>
+				<td><%=c.getFlgAtivo() %></td>
+				<td><%=c.getLogin() %></td>
+				<td><%=c.getSenha() %></td>
+				<td><%=c.getNome() %></td>
+				<td><%=c.getCpf() %></td>
+				<td><%=c.getDt_nasc() %></td>
+				<td><%=c.getCdCliente() %></td>
+				<td><a href="preAlterar_cliente.jsp?id=<%= c.getCdCliente()%>">Alterar</a></td>
+                <td><a href="DeletarCliente?id=<%= c.getCdCliente()%>&acao=deletar">Deletar</a></td>
 			</tr>
 		<%
 		}
