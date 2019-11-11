@@ -119,8 +119,8 @@ public class ClienteDAO extends AbstractJdbcDAO {
 				cliente.setSenha(rs.getString("senha"));
 				cliente.setNome(rs.getString("nome"));
 				cliente.setCpf(rs.getString("cpf"));
-				cliente.setDt_nasc(rs.getString("dtNasc"));
-				cliente.setCdCliente(rs.getString("cdCliente"));
+				cliente.setDt_nasc(rs.getString("dt_Nasc"));
+				cliente.setCdCliente(rs.getString("cd_cliente"));
 				cliente.setFlgAtivo(rs.getString("fl_ativo"));
 				
 				// adicionando o objeto à lista
