@@ -17,12 +17,12 @@ import com.les.bolo.core.fachada.IFachada;
 public class Fachada implements IFachada {
 	
 	private Resultado resultado;
-	
+	private ClienteDAO dao;
 
 	@Override
 	public Resultado salvar(EntidadeDominio entidade) {
 		resultado = new Resultado();
-		ClienteDAO dao = new ClienteDAO();
+		dao = new ClienteDAO();
 		
 		try {
 			dao.salvar(entidade);
@@ -42,7 +42,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado alterar(EntidadeDominio entidade) {
 		resultado = new Resultado();
-		ClienteDAO dao = new ClienteDAO();
+		dao = new ClienteDAO();
 		
 		try {
 			dao.alterar(entidade);
@@ -62,7 +62,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado excluir(EntidadeDominio entidade) {
 		resultado = new Resultado();
-		ClienteDAO dao = new ClienteDAO();
+		dao = new ClienteDAO();
 		
 		try {
 			dao.excluir(entidade);
@@ -82,7 +82,7 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado consultar(EntidadeDominio entidade) {
 		resultado = new Resultado();
-		ClienteDAO dao = new ClienteDAO();
+		dao = new ClienteDAO();
 		
 		try {
 			resultado.setEntidades(dao.consultar(entidade));
