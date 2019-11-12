@@ -72,7 +72,7 @@ public class CadastroServletTeste extends HttpServlet {
 				// Edita o cliente
 				dao.alterar(cliente);
 				
-				writer.println("<h1>Cadastro Editado com sucesso!</h1>");
+				writer.println("<h1>Cadastro Alterado com sucesso!</h1>");
 				
 				writer.println("<ul>");
 				writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");

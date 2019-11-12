@@ -75,7 +75,7 @@ public class ControllerServlet extends HttpServlet {
         ICommand command = commands.get(operacao);
         
         // Executa o command que chamará a fachada para executar a operação requisitada
-        // o retorno é uma instância da classe resultado que pode conter mensagens derro
+        // o retorno é uma instância da classe resultado que pode conter mensagens de erro
         // ou entidades de retorno
         Resultado resultado = command.execute(entidade);
         
