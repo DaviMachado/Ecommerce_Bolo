@@ -30,7 +30,7 @@ public class ClienteHelper implements IViewHelper {
         String dtNasc = null;
 		
 		if (("CONSULTAR").equals(operacao)) {
-			
+			cliente = new Cliente();
 		}
 		
 		else if (("SALVAR").equals(operacao)) {

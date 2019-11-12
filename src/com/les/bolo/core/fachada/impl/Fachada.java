@@ -1,5 +1,10 @@
 package com.les.bolo.core.fachada.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.les.bolo.core.dao.IDAO;
+import com.les.bolo.core.dao.impl.ClienteDAO;
 import com.les.bolo.core.dominio.EntidadeDominio;
 import com.les.bolo.core.dominio.Resultado;
 import com.les.bolo.core.fachada.IFachada;
@@ -17,28 +22,76 @@ public class Fachada implements IFachada {
 	@Override
 	public Resultado salvar(EntidadeDominio entidade) {
 		resultado = new Resultado();
+		ClienteDAO dao = new ClienteDAO();
 		
-		
+		try {
+			dao.salvar(entidade);
+			
+			// cria uma lista para mostrar os clientes salvos
+			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
+            entidades.add(entidade);
+            resultado.setEntidades(entidades);
+		} catch (Exception e) {
+			e.printStackTrace();
+            resultado.setMensagem("Não foi possível Salvar o registro!");
+		}
 		
 		return resultado;
 	}
 
 	@Override
 	public Resultado alterar(EntidadeDominio entidade) {
-		// TODO Auto-generated method stub
-		return null;
+		resultado = new Resultado();
+		ClienteDAO dao = new ClienteDAO();
+		
+		try {
+			dao.alterar(entidade);
+			
+			// cria uma lista para mostrar os clientes alterados
+			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
+            entidades.add(entidade);
+            resultado.setEntidades(entidades);
+		} catch (Exception e) {
+			e.printStackTrace();
+            resultado.setMensagem("Não foi possível Alterar o registro!");
+		}
+		
+		return resultado;
 	}
 
 	@Override
 	public Resultado excluir(EntidadeDominio entidade) {
-		// TODO Auto-generated method stub
-		return null;
+		resultado = new Resultado();
+		ClienteDAO dao = new ClienteDAO();
+		
+		try {
+			dao.excluir(entidade);
+			
+			// cria uma lista para mostrar os clientes excluidos
+			List<EntidadeDominio> entidades = new ArrayList<EntidadeDominio>();
+            entidades.add(entidade);
+            resultado.setEntidades(entidades);
+		} catch (Exception e) {
+			e.printStackTrace();
+            resultado.setMensagem("Não foi possível Excluir o registro!");
+		}
+		
+		return resultado;
 	}
 
 	@Override
 	public Resultado consultar(EntidadeDominio entidade) {
-		// TODO Auto-generated method stub
-		return null;
+		resultado = new Resultado();
+		ClienteDAO dao = new ClienteDAO();
+		
+		try {
+			resultado.setEntidades(dao.consultar(entidade));
+		} catch (Exception e) {
+			e.printStackTrace();
+            resultado.setMensagem("Não foi possível Consulta o registro!");
+		}
+		
+		return resultado;
 	}
 
 }

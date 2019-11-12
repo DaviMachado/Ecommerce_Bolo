@@ -69,7 +69,7 @@ public class ControllerServlet extends HttpServlet {
         EntidadeDominio entidade = vh.getEntidade(request);
         
         // Obtém a operação que será executada
-        String operacao = request.getParameter("acao");
+        String operacao = request.getParameter("operacao");
         
         // Recupera o command correspondente com a operacao
         ICommand command = commands.get(operacao);

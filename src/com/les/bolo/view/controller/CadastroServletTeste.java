@@ -46,7 +46,7 @@ public class CadastroServletTeste extends HttpServlet {
 			cliente.setDt_nasc(request.getParameter("dtNasc"));
 			cliente.setCdCliente(request.getParameter("cdCliente"));
 			
-			// Verificando se os botões foram clicados na tela
+			// Verificando quais botões foram clicados na tela
 			String operacao = (request.getParameter("operacao"));
 			
 			if (("SALVAR").equals(operacao)) {
