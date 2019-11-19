@@ -59,6 +59,9 @@ public class ControllerServlet extends HttpServlet {
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         
+        // Obtém a operação que será executada
+        String operacao = request.getParameter("operacao");
+        
         // Obtém a uri que invocou esta servlet
         String uri = request.getRequestURI();
         
@@ -67,9 +70,6 @@ public class ControllerServlet extends HttpServlet {
         
         // O View Helper retorna a entidade especifica para a tela que chamou esta servlet
         EntidadeDominio entidade = vh.getEntidade(request);
-        
-        // Obtém a operação que será executada
-        String operacao = request.getParameter("operacao");
         
         // Recupera o command correspondente com a operacao
         ICommand command = commands.get(operacao);

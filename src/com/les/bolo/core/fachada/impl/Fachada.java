@@ -8,6 +8,7 @@ import com.les.bolo.core.dao.impl.ClienteDAO;
 import com.les.bolo.core.dominio.EntidadeDominio;
 import com.les.bolo.core.dominio.Resultado;
 import com.les.bolo.core.fachada.IFachada;
+import com.les.bolo.core.strategy.impl.ValidarFlgAtivo;
 import com.les.bolo.core.strategy.impl.ValidarSenha;
 
 /**
@@ -22,6 +23,7 @@ public class Fachada implements IFachada {
 	
 	/* ------------ Declaração dos Strategy ------------ */
 	ValidarSenha vSenha = new ValidarSenha();
+	ValidarFlgAtivo vFlgAtivo = new ValidarFlgAtivo();
 	
 	/*---SALVAR---*/
 	@Override
@@ -135,6 +137,7 @@ public class Fachada implements IFachada {
 			return msg;
 		}
 		else if (("SALVAR").equals(operacao)) {
+			msg = vFlgAtivo.validar(entidade);
 			msg = vSenha.validar(entidade);
 			
 			return msg;
