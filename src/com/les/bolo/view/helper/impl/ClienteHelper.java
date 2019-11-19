@@ -103,29 +103,49 @@ public class ClienteHelper implements IViewHelper {
 		// Usa para escrever na tela
 		PrintWriter writer = response.getWriter();
 		
-		
 		if (("CONSULTAR").equals(operacao)) {
 			try {
 				// Redireciona para o arquivo .jsp
 				request.getRequestDispatcher("JSP/lista-clientes-scriptlet.jsp").forward(request, response);
 			} catch (Exception e) {
+				// mostra as mensagens de ERRO se houver
+				writer.println(resultado.getMensagem());  // TESTAR
 				System.out.println("ERRO!");
 			}
 		}
 		
 		else if (("SALVAR").equals(operacao)) {
-			writer.println("<h1>Cadastro salvo com sucesso!</h1>");
-			writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			try {
+				writer.println("<h1>Cadastro salvo com sucesso!</h1>");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			} catch (Exception e) {
+				// mostra as mensagens de ERRO se houver
+				writer.println(resultado.getMensagem());  // TESTAR
+				System.out.println("ERRO!");
+			}
+			
 		}
 		
 		else if (("ALTERAR").equals(operacao)) {
-			writer.println("<h1>Cadastro Alterado com sucesso!</h1>");
-			writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			try {
+				writer.println("<h1>Cadastro Alterado com sucesso!</h1>");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			} catch (Exception e) {
+				// mostra as mensagens de ERRO se houver
+				writer.println(resultado.getMensagem());  // TESTAR
+				System.out.println("ERRO!");
+			}
 		}
 		
 		else if (("EXCLUIR").equals(operacao)) {
-			writer.println("<h1>Cadastro Removido com sucesso!</h1>");
-			writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			try {
+				writer.println("<h1>Cadastro Removido com sucesso!</h1>");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			} catch (Exception e) {
+				// mostra as mensagens de ERRO se houver
+				writer.println(resultado.getMensagem());  // TESTAR
+				System.out.println("ERRO!");
+			}
 		}
 	}
 
