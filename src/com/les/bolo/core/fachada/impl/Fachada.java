@@ -43,7 +43,7 @@ public class Fachada implements IFachada {
 		
 		String msg = executarRegras(entidade, "SALVAR");
 		
-		if (msg == null) {
+		if (msg == null || msg == "") {
 			try {
 				dao.salvar(entidade);
 				
@@ -142,7 +142,6 @@ public class Fachada implements IFachada {
 	// Método para executar as regras de negocio / Strategy
 	private String executarRegras (EntidadeDominio entidade, String operacao) {
 		String msg = null;
-		String msg2 = null;
 		
 		if (("CONSULTAR").equals(operacao)) {
 			return msg;
