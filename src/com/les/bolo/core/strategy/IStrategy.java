@@ -9,6 +9,6 @@ import com.les.bolo.core.dominio.EntidadeDominio;
  */
 public interface IStrategy {
 	
-	public String validar (EntidadeDominio entidade);
+	public String validar (EntidadeDominio entidade, String msg);
 	
 }

@@ -11,7 +11,7 @@ import com.les.bolo.core.strategy.IStrategy;
 public class ValidarPrimeiraCompra implements IStrategy {
 
 	@Override
-	public String validar(EntidadeDominio entidade) {
+	public String validar(EntidadeDominio entidade, String msg) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -8,7 +8,12 @@ import com.les.bolo.core.dao.impl.ClienteDAO;
 import com.les.bolo.core.dominio.EntidadeDominio;
 import com.les.bolo.core.dominio.Resultado;
 import com.les.bolo.core.fachada.IFachada;
+import com.les.bolo.core.strategy.impl.ValidarCPF;
+import com.les.bolo.core.strategy.impl.ValidarCodigoClienteSys;
+import com.les.bolo.core.strategy.impl.ValidarDataNascimento;
 import com.les.bolo.core.strategy.impl.ValidarFlgAtivo;
+import com.les.bolo.core.strategy.impl.ValidarLogin;
+import com.les.bolo.core.strategy.impl.ValidarNome;
 import com.les.bolo.core.strategy.impl.ValidarSenha;
 
 /**
@@ -22,8 +27,13 @@ public class Fachada implements IFachada {
 	private ClienteDAO dao;
 	
 	/* ------------ Declaração dos Strategy ------------ */
-	ValidarSenha vSenha = new ValidarSenha();
 	ValidarFlgAtivo vFlgAtivo = new ValidarFlgAtivo();
+	ValidarLogin vLogin = new ValidarLogin();
+	ValidarSenha vSenha = new ValidarSenha();
+	ValidarNome vNome = new ValidarNome();
+	ValidarCPF vCPF = new ValidarCPF();
+	ValidarDataNascimento vDataNascimento = new ValidarDataNascimento();
+	ValidarCodigoClienteSys vCodigoClienteSys = new ValidarCodigoClienteSys();
 	
 	/*---SALVAR---*/
 	@Override
@@ -132,13 +142,19 @@ public class Fachada implements IFachada {
 	// Método para executar as regras de negocio / Strategy
 	private String executarRegras (EntidadeDominio entidade, String operacao) {
 		String msg = null;
+		String msg2 = null;
 		
 		if (("CONSULTAR").equals(operacao)) {
 			return msg;
 		}
 		else if (("SALVAR").equals(operacao)) {
-			msg = vFlgAtivo.validar(entidade);
-			msg = vSenha.validar(entidade);
+			msg = vFlgAtivo.validar(entidade, msg);
+			msg = vLogin.validar(entidade, msg);
+			msg = vSenha.validar(entidade, msg);
+			msg = vNome.validar(entidade, msg);
+			msg = vCPF.validar(entidade, msg);
+			msg = vDataNascimento.validar(entidade, msg);
+			msg = vCodigoClienteSys.validar(entidade, msg);
 			
 			return msg;
 		}

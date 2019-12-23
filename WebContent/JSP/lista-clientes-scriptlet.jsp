@@ -38,8 +38,8 @@
 				<td><%=c.getDt_nasc() %></td>
 				<td><%=c.getCdCliente() %></td>
 				<td><%=c.getFlgAtivo() %></td>
-				<td><a href="preAlterar_cliente.jsp?id=<%= c.getCdCliente()%>">Alterar</a></td>
-                <td><a href="DeletarCliente?id=<%= c.getCdCliente()%>&acao=deletar">Deletar</a></td>
+				<!-- <td><a href="preAlterar_cliente.jsp?id=<%= c.getCdCliente()%>">Alterar</a></td> -->
+                <!-- <td><a href="DeletarCliente?id=<%= c.getCdCliente()%>&acao=deletar">Deletar</a></td> -->
 			</tr>
 		<%
 		}

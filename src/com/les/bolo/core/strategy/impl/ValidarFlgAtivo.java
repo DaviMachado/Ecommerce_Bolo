@@ -12,14 +12,14 @@ import com.les.bolo.core.strategy.IStrategy;
 public class ValidarFlgAtivo implements IStrategy {
 
 	@Override
-	public String validar(EntidadeDominio entidade) {
+	public String validar(EntidadeDominio entidade, String msg) {
 		Cliente cliente = (Cliente) entidade;
 		
 		if (cliente.getFlgAtivo() == null) {
 			cliente.setFlgAtivo("0"); // para não deixar o campo nulo, passa zerado
 		}
 		
-		return null;
+		return "";
 	}
 
 }

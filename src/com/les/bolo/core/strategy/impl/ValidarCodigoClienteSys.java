@@ -5,22 +5,22 @@ import com.les.bolo.core.dominio.EntidadeDominio;
 import com.les.bolo.core.strategy.IStrategy;
 
 /**
- * Classe para validar a senha do cliente
+ * Classe para validar o campo codigo do sistema do cliente
  * @author Davi Rodrigues
- * @date 23/10/2019
+ * @date 27/11/2019
  */
-public class ValidarSenha implements IStrategy {
+public class ValidarCodigoClienteSys implements IStrategy {
 
 	@Override
 	public String validar(EntidadeDominio entidade, String msg) {
 		Cliente cliente = (Cliente) entidade;
 		
-		if(cliente.getSenha() == null || cliente.getSenha().equals("")) {
-			return (msg + "- Favor insira uma senha. \n");
+		if(cliente.getCdCliente() == null || cliente.getCdCliente().equals("")) {
+			return (msg + "- Favor insira um codigo p/ o sistema. \n");
 		}
 		else {
 			return msg;
 		}
 	}
-	
+
 }

@@ -104,47 +104,54 @@ public class ClienteHelper implements IViewHelper {
 		PrintWriter writer = response.getWriter();
 		
 		if (("CONSULTAR").equals(operacao)) {
-			try {
+			if (resultado.getMensagem() == null || resultado.getMensagem().equals("")) {
 				// Redireciona para o arquivo .jsp
 				request.getRequestDispatcher("JSP/lista-clientes-scriptlet.jsp").forward(request, response);
-			} catch (Exception e) {
+			} 
+			else {
 				// mostra as mensagens de ERRO se houver
-				writer.println(resultado.getMensagem());  // TESTAR
+				writer.println(resultado.getMensagem());
 				System.out.println("ERRO!");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
 		
 		else if (("SALVAR").equals(operacao)) {
-			try {
+			if (resultado.getMensagem() == null || resultado.getMensagem().equals("")) {
 				writer.println("<h1>Cadastro salvo com sucesso!</h1>");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
-			} catch (Exception e) {
-				// mostra as mensagens de ERRO se houver
-				writer.println(resultado.getMensagem());  // TESTAR
-				System.out.println("ERRO!");
 			}
-			
+			else {
+				// mostra as mensagens de ERRO se houver
+				writer.println(resultado.getMensagem());
+				System.out.println("ERRO!");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
+			}
 		}
 		
 		else if (("ALTERAR").equals(operacao)) {
-			try {
+			if (resultado.getMensagem() == null || resultado.getMensagem().equals("")) {
 				writer.println("<h1>Cadastro Alterado com sucesso!</h1>");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
-			} catch (Exception e) {
+			} 
+			else {
 				// mostra as mensagens de ERRO se houver
-				writer.println(resultado.getMensagem());  // TESTAR
+				writer.println(resultado.getMensagem());
 				System.out.println("ERRO!");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
 		
 		else if (("EXCLUIR").equals(operacao)) {
-			try {
+			if (resultado.getMensagem() == null || resultado.getMensagem().equals("")) {
 				writer.println("<h1>Cadastro Removido com sucesso!</h1>");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
-			} catch (Exception e) {
+			} 
+			else {
 				// mostra as mensagens de ERRO se houver
-				writer.println(resultado.getMensagem());  // TESTAR
+				writer.println(resultado.getMensagem());
 				System.out.println("ERRO!");
+				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
 	}
