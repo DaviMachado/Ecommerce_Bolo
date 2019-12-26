@@ -36,15 +36,4 @@ public class Cliente extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	// Metodos
-	public void ConsultarPedido() {
-		
-	}
-	public void ConsultarBolo() {
-		
-	}
-	public void ValidarSenha() {
-		
-	}
 }
