@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.les.bolo.core.dao.impl.ClienteDAO;
 import com.les.bolo.core.dominio.Cliente;
+import com.les.bolo.core.dominio.Usuario;
 
 //Registrando uma Servlet sem a necessidade do arquivo "web.xml".
 //Parâmetros: nome da Servlet e a URL que ela vai acessar.
@@ -36,11 +37,15 @@ public class CadastroServletTeste extends HttpServlet {
 			// instanciando as classes
 			Cliente cliente = new Cliente();
 			ClienteDAO dao = new ClienteDAO();
+			Usuario usuario = new Usuario();
 			
 			// Pegando as informações digitadas nos Forms do HTML
 			cliente.setFlgAtivo(request.getParameter("flgAtivo"));
-			cliente.setLogin(request.getParameter("login"));
-			cliente.setSenha(request.getParameter("senha"));
+			
+			usuario.setLogin(request.getParameter("login"));
+			usuario.setSenha(request.getParameter("senha"));
+			cliente.setUsuario(usuario);
+			
 			cliente.setNome(request.getParameter("nome"));
 			cliente.setCpf(request.getParameter("cpf"));
 			cliente.setDt_nasc(request.getParameter("dtNasc"));
@@ -58,8 +63,8 @@ public class CadastroServletTeste extends HttpServlet {
 				// Mostra o que foi gravado
 				writer.println("<ul>");
 				writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
-				writer.println("<li>Login: " + cliente.getLogin() + "</li>");
-				writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
+				writer.println("<li>Login: " + usuario.getLogin() + "</li>");
+				writer.println("<li>Senha: " + usuario.getSenha() + "</li>");
 				writer.println("<li>Nome: " + cliente.getNome() + "</li>");
 				writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
 				writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");
@@ -76,8 +81,8 @@ public class CadastroServletTeste extends HttpServlet {
 				
 				writer.println("<ul>");
 				writer.println("<li>Ativo: " + cliente.getFlgAtivo() + "</li>");
-				writer.println("<li>Login: " + cliente.getLogin() + "</li>");
-				writer.println("<li>Senha: " + cliente.getSenha() + "</li>");
+				writer.println("<li>Login: " + usuario.getLogin() + "</li>");
+				writer.println("<li>Senha: " + usuario.getSenha() + "</li>");
 				writer.println("<li>Nome: " + cliente.getNome() + "</li>");
 				writer.println("<li>CPF: " + cliente.getCpf() + "</li>");
 				writer.println("<li>Data Nascimento: " + cliente.getDt_nasc() + "</li>");

@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.les.bolo.core.dominio.Cliente;
 import com.les.bolo.core.dominio.EntidadeDominio;
+import com.les.bolo.core.dominio.Usuario;
 
 public class ClienteDAO extends AbstractJdbcDAO {
 	
@@ -23,13 +24,14 @@ public class ClienteDAO extends AbstractJdbcDAO {
 		
 		try {
 			Cliente cliente = (Cliente) entidade;
+			Usuario usuario = cliente.getUsuario();
 			
 			// prepared statement para inserção
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
 			// seta os valores
-			stmt.setString(1,cliente.getLogin());
-			stmt.setString(2,cliente.getSenha());
+			stmt.setString(1,usuario.getLogin());
+			stmt.setString(2,usuario.getSenha());
 			stmt.setString(3,cliente.getNome());
 			stmt.setString(4,cliente.getCpf());
 			stmt.setString(5,cliente.getDt_nasc());
@@ -57,11 +59,12 @@ public class ClienteDAO extends AbstractJdbcDAO {
 		
 		try {
 			Cliente cliente = (Cliente) entidade;
+			Usuario usuario = cliente.getUsuario();
 			
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setString(1, cliente.getLogin());
-			stmt.setString(2, cliente.getSenha());
+			stmt.setString(1, usuario.getLogin());
+			stmt.setString(2, usuario.getSenha());
 			stmt.setString(3, cliente.getNome());
 			stmt.setString(4, cliente.getCpf());
 			stmt.setString(5, cliente.getDt_nasc());
@@ -114,9 +117,12 @@ public class ClienteDAO extends AbstractJdbcDAO {
 			while (rs.next()) {
 				// criando o objeto Cliente
 				Cliente cliente = new Cliente();
+				Usuario usuario = new Usuario();
 				
-				cliente.setLogin(rs.getString("login"));
-				cliente.setSenha(rs.getString("senha"));
+				usuario.setLogin(rs.getString("login"));
+				usuario.setSenha(rs.getString("senha"));
+				cliente.setUsuario(usuario);
+				
 				cliente.setNome(rs.getString("nome"));
 				cliente.setCpf(rs.getString("cpf"));
 				cliente.setDt_nasc(rs.getString("dt_Nasc"));

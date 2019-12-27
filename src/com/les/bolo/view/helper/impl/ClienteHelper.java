@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.les.bolo.core.dominio.Cliente;
 import com.les.bolo.core.dominio.EntidadeDominio;
 import com.les.bolo.core.dominio.Resultado;
+import com.les.bolo.core.dominio.Usuario;
 import com.les.bolo.view.helper.IViewHelper;
 
 public class ClienteHelper implements IViewHelper {
 	
 	Cliente cliente = null;
+	Usuario usuario = null;
 
 	@Override
 	public EntidadeDominio getEntidade(HttpServletRequest request) {
@@ -36,6 +38,7 @@ public class ClienteHelper implements IViewHelper {
 		
 		else if (("SALVAR").equals(operacao)) {
 			cliente = new Cliente();
+			usuario = new Usuario();
 			
 			// Atributos da classe cliente
 			login = request.getParameter("login");
@@ -49,8 +52,10 @@ public class ClienteHelper implements IViewHelper {
 			dtNasc = request.getParameter("dtNasc");
 			
 			// Atribuindo os valores capturados do HTML para o cliente
-			cliente.setLogin(login);
-			cliente.setSenha(senha);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			cliente.setUsuario(usuario);
+			
 			cliente.setFlgAtivo(flgAtivo);
 			cliente.setCdCliente(cdCliente);
 			cliente.setNome(nome);
@@ -60,6 +65,7 @@ public class ClienteHelper implements IViewHelper {
 		
 		else if (("ALTERAR").equals(operacao)) {
 			cliente = new Cliente();
+			usuario = new Usuario();
 			
 			// Atributos da classe cliente
 			login = request.getParameter("login");
@@ -73,8 +79,10 @@ public class ClienteHelper implements IViewHelper {
 			dtNasc = request.getParameter("dtNasc");
 			
 			// Atribuindo os valores capturados do HTML para o cliente
-			cliente.setLogin(login);
-			cliente.setSenha(senha);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			cliente.setUsuario(usuario);
+			
 			cliente.setFlgAtivo(flgAtivo);
 			cliente.setCdCliente(cdCliente);
 			cliente.setNome(nome);

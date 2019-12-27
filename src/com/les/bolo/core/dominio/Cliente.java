@@ -8,8 +8,8 @@ package com.les.bolo.core.dominio;
 public class Cliente extends Pessoa {
 	private String cdCliente;
 	private String flgAtivo;
-	private String login;
-	private String senha;
+	private Usuario usuario;
+	private String telefone;
 	
 	
 	public String getCdCliente() {
@@ -24,16 +24,17 @@ public class Cliente extends Pessoa {
 	public void setFlgAtivo(String flgAtivo) {
 		this.flgAtivo = flgAtivo;
 	}
-	public String getLogin() {
-		return login;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	public String getSenha() {
-		return senha;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
+	
 }

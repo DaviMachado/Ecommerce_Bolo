@@ -29,10 +29,12 @@
 		
 		// Aplicado o CAST para poder popular o cliente
 		Cliente c = (Cliente) e;
+		// pega o usuario que esta dentro do cliente
+		Usuario u = c.getUsuario();
 		%>
 			<tr>
-				<td><%=c.getLogin() %></td>
-				<td><%=c.getSenha() %></td>
+				<td><%=u.getLogin() %></td>
+				<td><%=u.getSenha() %></td>
 				<td><%=c.getNome() %></td>
 				<td><%=c.getCpf() %></td>
 				<td><%=c.getDt_nasc() %></td>
