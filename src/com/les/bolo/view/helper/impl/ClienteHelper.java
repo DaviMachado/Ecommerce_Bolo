@@ -119,7 +119,7 @@ public class ClienteHelper implements IViewHelper {
 			else {
 				// mostra as mensagens de ERRO se houver
 				writer.println(resultado.getMensagem());
-				System.out.println("ERRO!");
+				System.out.println("ERRO PARA CONSULTAR!");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
@@ -132,7 +132,7 @@ public class ClienteHelper implements IViewHelper {
 			else {
 				// mostra as mensagens de ERRO se houver
 				writer.println(resultado.getMensagem());
-				System.out.println("ERRO!");
+				System.out.println("ERRO PARA SALVAR!");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
@@ -145,7 +145,7 @@ public class ClienteHelper implements IViewHelper {
 			else {
 				// mostra as mensagens de ERRO se houver
 				writer.println(resultado.getMensagem());
-				System.out.println("ERRO!");
+				System.out.println("ERRO PARA ALTERAR!");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}
@@ -158,7 +158,7 @@ public class ClienteHelper implements IViewHelper {
 			else {
 				// mostra as mensagens de ERRO se houver
 				writer.println(resultado.getMensagem());
-				System.out.println("ERRO!");
+				System.out.println("ERRO PARA EXCLUIR!");
 				writer.println("<input type=\"button\" value=\"Voltar\" onclick=\"history.back()\">");
 			}
 		}

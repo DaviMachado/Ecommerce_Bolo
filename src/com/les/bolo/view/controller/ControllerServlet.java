@@ -19,6 +19,7 @@ import com.les.bolo.view.command.impl.ExcluirCommand;
 import com.les.bolo.view.command.impl.SalvarCommand;
 import com.les.bolo.view.helper.IViewHelper;
 import com.les.bolo.view.helper.impl.ClienteHelper;
+import com.les.bolo.view.helper.impl.LoginHelper;
 
 /**
  * Responsavel por processar todas as requisições feita pelo usuario,
@@ -48,6 +49,7 @@ public class ControllerServlet extends HttpServlet {
 		viewHelper = new HashMap<String, IViewHelper>();
 		
 		viewHelper.put("/Ecommerce_Bolo/cadastro", new ClienteHelper());
+		viewHelper.put("/Ecommerce_Bolo/login", new LoginHelper());
 	}
 	
 	// Servlet Principal do sistema
